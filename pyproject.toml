@@ -1,0 +1,20 @@
+[project]
+name = "gigachat-harness-profile"
+version = "0.1.0"
+description = "Minimal DeepAgents HarnessProfile for GigaChat"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "deepagents",
+    "langchain-gigachat",
+    "python-dotenv",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.12",
+]
