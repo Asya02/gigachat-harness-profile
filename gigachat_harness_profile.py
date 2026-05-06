@@ -67,14 +67,6 @@ def think(thought: str = Field(..., description="A thought to think about.")) ->
     return thought
 
 
-class HarnessDebugMiddleware(AgentMiddleware):
-    """Tiny middleware to show profile middleware is active."""
-
-    def before_model(self, state: dict[str, Any], runtime: Any) -> None:
-        print("[HarnessDebugMiddleware] before_model hook executed")
-        return None
-
-
 class ThinkToolMiddleware(AgentMiddleware):
     """Inject local think tool into default toolset."""
 
@@ -143,6 +135,6 @@ def register_gigachat_harness_profile(working_directory: str | None = None) -> N
                     "ensure the import exists; if missing, add it immediately before finishing."
                 ),
             },
-            extra_middleware=(ThinkToolMiddleware(), HarnessDebugMiddleware()),
+            extra_middleware=(ThinkToolMiddleware(),),
         ),
     )
